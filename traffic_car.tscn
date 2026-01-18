@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cggrqkxoxm76n"]
+
+[ext_resource type="Script" uid="uid://bbtlmwn6jlh06" path="res://traffic_car.gd" id="1_g8lor"]
+[ext_resource type="PackedScene" uid="uid://cxjbf26o7shmy" path="res://lamborghini_aventador.glb" id="2_oktw3"]
+
+[node name="traffic_car" type="Node3D"]
+script = ExtResource("1_g8lor")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_oktw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04384339, 1.1920929e-07, -0.11880207)
