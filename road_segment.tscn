@@ -20,6 +20,7 @@ mesh = SubResource("BoxMesh_617j6")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_hnbtl")
 
 [node name="CenterLine" type="MeshInstance3D" parent="."]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxorefbwapy6e"]
+
+[ext_resource type="Script" uid="uid://bbtlmwn6jlh06" path="res://traffic_car.gd" id="1_8fton"]
+[ext_resource type="PackedScene" uid="uid://bcgd15g0nonkx" path="res://old_rusty_car.glb" id="2_t0qwm"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_8fton")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_t0qwm")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

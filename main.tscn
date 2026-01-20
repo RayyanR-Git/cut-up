@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bs4xdyx3mglt2"]
+[gd_scene load_steps=23 format=3 uid="uid://bs4xdyx3mglt2"]
 
 [ext_resource type="Script" uid="uid://dwagluvkhjmag" path="res://road_manager.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bk5cdswf88n03" path="res://road_segment.tscn" id="2_7mycd"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="5_5vw27"]
 [ext_resource type="Script" uid="uid://dgcw3n0ijix0q" path="res://traffic_manager.gd" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://cggrqkxoxm76n" path="res://traffic_car.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cxorefbwapy6e" path="res://traffic_car1.tscn" id="9_vivmo"]
+[ext_resource type="PackedScene" uid="uid://cjnsqh5cpjbh5" path="res://traffic_car2.tscn" id="10_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://cavqctaxm36nv" path="res://traffic_car3.tscn" id="11_yaehf"]
+[ext_resource type="PackedScene" uid="uid://tu556ut2u4p" path="res://traffic_car4.tscn" id="12_074og"]
 [ext_resource type="Shader" uid="uid://dxvrxr5aaivf5" path="res://sky.gdshader" id="12_dg77c"]
 [ext_resource type="Texture2D" uid="uid://iwmyl08ywypr" path="res://8e3f6a42-d633-4c70-a18e-136eaad4d2bb.jpg" id="13_ycdy4"]
 
@@ -53,12 +57,11 @@ road_segment_scene = ExtResource("2_7mycd")
 visible_segments = 40
 
 [node name="Player" type="VehicleBody3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.04520738, 1.5632244, -0.7989998)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2, 0)
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.1, 0)
 script = ExtResource("2_lquwl")
-STEER_LIMIT = 0.4
-engine_force_value = 50
+STEER_LIMIT = 0.15
 
 [node name="wheal0" type="VehicleWheel3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.997421, 0.340338, -1.50006)
@@ -170,7 +173,7 @@ shape = SubResource("CapsuleShape3D_7kmqy")
 
 [node name="TrafficManager" type="Node3D" parent="."]
 script = ExtResource("7_272bh")
-traffic_car_scene = ExtResource("8_5vw27")
+traffic_car_scenes = Array[PackedScene]([ExtResource("8_5vw27"), ExtResource("9_vivmo"), ExtResource("10_2cqfq"), ExtResource("11_yaehf"), ExtResource("12_074og")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vivmo")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://tu556ut2u4p"]
+
+[ext_resource type="Script" uid="uid://bbtlmwn6jlh06" path="res://traffic_car.gd" id="1_vay3n"]
+[ext_resource type="PackedScene" uid="uid://dcg2tndfh0xrk" path="res://2018_mercedes-amg_c63_amg_cabriolet.glb" id="2_2aag5"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_vay3n")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_2aag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008731723, 0, 0.0036120415)

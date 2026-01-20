@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var traffic_car_scene: PackedScene
+@export var traffic_car_scenes: Array[PackedScene] = []   # 6 scenes: traffic_car .. traffic_car5
 @export var spawn_interval: float = 1.5
 @export var spawn_distance: float = 80.0
 
@@ -11,15 +11,15 @@ var player: Node3D
 var timer: float = 0.0
 
 func _ready():
-	randomize() # ensure randi() is not always the same
+	randomize()
 	player = get_parent().get_node_or_null("Player")
 	if not player:
 		push_error("TrafficManager: Player not found! Make sure Main has a child named 'Player'.")
-	if not traffic_car_scene:
-		push_error("TrafficManager: traffic_car_scene not assigned!")
+	if traffic_car_scenes.is_empty():
+		push_error("TrafficManager: traffic_car_scenes is empty! Assign traffic_car .. traffic_car5 in the Inspector.")
 
 func _physics_process(delta):
-	if not player or not traffic_car_scene:
+	if not player or traffic_car_scenes.is_empty():
 		return
 
 	timer += delta
@@ -32,7 +32,9 @@ func spawn_traffic_car():
 	var lane_index := randi() % lanes.size()
 	var x_pos := lanes[lane_index]
 
-	var car: Node3D = traffic_car_scene.instantiate()
+	# pick random car scene from array
+	var scene: PackedScene = traffic_car_scenes.pick_random()
+	var car: Node3D = scene.instantiate()
 	add_child(car)
 
 	# spawn ahead of player
@@ -44,8 +46,9 @@ func spawn_traffic_car():
 	# LEFT lanes (0,1) move backward, RIGHT lanes (2,3) move forward
 	if lane_index <= 1:
 		car.speed = -20.0  # backward along Z
+		car.rotation.y = PI  # turn 180° to face backward direction
 	else:
 		car.speed = 20.0   # forward along Z
+		car.rotation.y = 0.0  # face forward (default)
 
-	# DEBUG: see that speed is set
-	print("Spawned car in lane ", lane_index, " with speed ", car.speed)
+	print("Spawned car type ", scene, " in lane ", lane_index, " with speed ", car.speed)

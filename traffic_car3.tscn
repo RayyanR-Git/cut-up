@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cavqctaxm36nv"]
+
+[ext_resource type="Script" uid="uid://bbtlmwn6jlh06" path="res://traffic_car.gd" id="1_4e0j4"]
+[ext_resource type="PackedScene" uid="uid://byeo6n7008cc7" path="res://2025_toyota_land_cruiser_250.glb" id="2_q17qa"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_4e0j4")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_q17qa")]
